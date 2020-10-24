@@ -1,6 +1,6 @@
 const Sentry = require('@sentry/node');
 
-const config = require('../../../config');
+const config = require('../../config');
 
 Sentry.init({ dsn: `https://${config.sentryDns}.ingest.sentry.io/${config.sentryId}` });
 

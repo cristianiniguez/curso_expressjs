@@ -1,6 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
+const Joi = require('joi');
+
+const {
+  productIdSchema,
+  productTagSchema,
+  createProductSchema,
+  updateProductSchema,
+} = require('../../utils/schemas/products');
+
+const validation = require('../../utils/middlewares/validationHandler');
+
 const ProductService = require('../../services/products');
 const productService = new ProductService();
 
@@ -8,7 +19,6 @@ router.get('/', async function (req, res, next) {
   const { tags } = req.query;
   console.log('req', req.query);
   try {
-    throw new Error('This is an error from the API');
     const products = await productService.getProducts({ tags });
     res.status(200).json({
       data: products,
@@ -33,7 +43,7 @@ router.get('/:productId', async function (req, res, next) {
   }
 });
 
-router.post('/', async function (req, res, next) {
+router.post('/', validation(createProductSchema), async function (req, res, next) {
   const { body: product } = req;
   try {
     const createdProduct = await productService.createProduct({ product });
@@ -46,19 +56,24 @@ router.post('/', async function (req, res, next) {
   }
 });
 
-router.put('/:productId', async function (req, res, next) {
-  const { productId } = req.params;
-  const { body: product } = req;
-  try {
-    const updatedProduct = await productService.updateProduct({ productId, product });
-    res.status(200).json({
-      data: updatedProduct,
-      message: 'product updated',
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+router.put(
+  '/:productId',
+  validation(Joi.object({ productId: productIdSchema }), 'params'),
+  validation(updateProductSchema),
+  async function (req, res, next) {
+    const { productId } = req.params;
+    const { body: product } = req;
+    try {
+      const updatedProduct = await productService.updateProduct({ productId, product });
+      res.status(200).json({
+        data: updatedProduct,
+        message: 'product updated',
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 
 router.delete('/:productId', async function (req, res, next) {
   const { productId } = req.params;

@@ -1,5 +1,7 @@
 function validate(data, schema) {
-  return false;
+  console.log(schema);
+  const { error } = schema.validate(data);
+  return error;
 }
 
 function validationHandler(schema, check = 'body') {

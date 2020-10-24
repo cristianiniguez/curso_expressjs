@@ -9,7 +9,7 @@ const {
   logErrors,
   clientErrorHandler,
   errorHandler,
-} = require('./utils/mocks/middlewares/errorsHandlers');
+} = require('./utils/middlewares/errorsHandlers');
 
 // app
 const app = express();
