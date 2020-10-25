@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@hapi/boom": "^9.1.0",
     "@sentry/node": "^5.27.1",
     "@sentry/tracing": "^5.27.1",
     "body-parser": "^1.19.0",
