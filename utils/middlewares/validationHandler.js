@@ -1,7 +1,6 @@
 const boom = require('@hapi/boom');
 
 function validate(data, schema) {
-  console.log(schema);
   const { error } = schema.validate(data);
   return error;
 }
