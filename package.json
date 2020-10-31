@@ -9,6 +9,7 @@
     "@sentry/tracing": "^5.27.1",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "debug": "^4.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^17.3.0",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "chalk": "^4.1.0",
+    "cross-env": "^7.0.2",
     "mocha": "^8.2.0",
     "nodemon": "^2.0.6",
     "nyc": "^15.1.0",
@@ -31,6 +33,9 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
+    "dev:inspect": "nodemon --inspect index",
+    "dev:debug": "cross-env DEBUG=express:*,app:* npm run dev",
+    "debug": "cross-env DEBUG=express:*,app:* npm run start",
     "test": "mocha --exit",
     "test:cover": "nyc npm run test"
   },
