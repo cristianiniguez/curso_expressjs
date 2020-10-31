@@ -1,7 +1,6 @@
 {
-  "name": "template-engine",
+  "name": "octolion",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "@hapi/boom": "^9.1.0",
@@ -53,5 +52,18 @@
       "lib",
       "utils"
     ]
-  }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristianiniguez/curso_expressjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cristianiniguez/curso_expressjs/issues"
+  },
+  "homepage": "https://github.com/cristianiniguez/curso_expressjs#readme",
+  "description": ""
 }
