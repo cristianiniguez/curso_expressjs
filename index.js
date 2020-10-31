@@ -31,7 +31,7 @@ app.set('view engine', 'pug');
 
 // routes
 app.use('/products', productRouter);
-app.use('/api/products', productsApiRouter);
+productsApiRouter(app);
 app.use('/api/auth', authApiRouter);
 
 // redirect
