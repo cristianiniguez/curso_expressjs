@@ -33,8 +33,8 @@
     "supertest": "^6.0.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node index",
-    "build": "cd public/assets && cleancss -o main.min.css main.css",
+    "start": "node index",
+    "build": "cross-env NODE_ENV=production cd public/assets && cleancss -o main.min.css main.css",
     "dev": "nodemon index",
     "dev:inspect": "nodemon --inspect index",
     "dev:debug": "cross-env DEBUG=express:*,app:* npm run dev",
